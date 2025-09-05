@@ -37,3 +37,7 @@ function getHumanChoice() {
             break;
     }
 }
+
+// Two variables to keep track of human and computer score
+let humanScore = 0;
+let computerScore = 0;
