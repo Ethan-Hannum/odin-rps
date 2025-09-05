@@ -43,3 +43,13 @@ function getHumanChoice() {
 // Variables humanScore and computerScore keep track of human and computer score respectively
 let humanScore = 0;
 let computerScore = 0;
+
+// Function playRound will have humanChoice and computerChoice as parameters
+// humanChoice and computerChoice will take getHuman/ComputerChoice respectivlyp
+// If humanChoice equals computerChoice, return "Tie"
+// Else-If humanChoice equals rock and computerChoice equals paper, return "Paper Wins" ++ the winner
+// Else-If humanChoice equals rock and computerChoice equals scissors, return "Rock win" ++ the winner
+// Else-If humanChoice equals paper and computerChoice equals rock, return "Paper Wins" ++ the winner
+// Else-If humanChoice equals paper and computerChoice equals scissors, return "Scissors win" ++ the winner
+// Else-If humanChoice equals scissors and computerChoice equals rock, reutrn "Rock wins" ++ the winner
+// Else-If humanChoice equals scissors and computerChoice equals paper, return "Scissors win" ++ the winner
