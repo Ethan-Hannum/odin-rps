@@ -17,27 +17,29 @@ function getComputerChoice() {
 // Function getHumanChoice will ask user "(R)ock, (P)aper or (S)cissors?" and return one of the choices
 function getHumanChoice() {
 // Initialize humanCoice variable assigning a prompt asking the user their choice
-    let humanChoice = prompt("(R)ock, (P)aper, (S)cissors?\nPlease Enter 'R', 'P' or 'S': ");
+    let humanChoice = prompt("(R)ock, (P)aper, (S)cissors?\nPlease Enter your answer: ");
+    let lowerChoice = humanChoice.toLowerCase();
 // Switch statement for choice where
-    switch (humanChoice) {
-// Case "R" and Case "r" return "rock", break
+    switch (lowerChoice) {
+// Case "r" and Case "rock" return "rock", break
         case "r":
-        case "R":
+        case "rock":
             return "rock";
             break;
-// Case "P" and Case "p" return "paper", break
+// Case "p" and Case "paper" return "paper", break
         case "p":
-        case "P":
+        case "paper":
             return "paper";
             break;
-// Case "S" and Case "s" return "scissors", break
+// Case "s" and cases "scissor(s)" return "scissors", break
         case "s":
-        case "S":
+        case "scissor":
+        case "scissors":
             return "scissors";
             break;
     }
 }
 
-// Two variables to keep track of human and computer score
+// Variables humanScore and computerScore keep track of human and computer score respectively
 let humanScore = 0;
 let computerScore = 0;
