@@ -40,22 +40,58 @@ function getHumanChoice() {
     }
 }
 
-// Variables humanScore and computerScore keep track of human and computer score respectively
-let humanScore = 0;
-let computerScore = 0;
-
 // Initialize humanSelection and computerSelection variables to getHumanChoice() and getComputerChoice() respectively
 const humanSelection = getHumanChoice();
 const computerSelection = getComputerChoice();
 
+// Function playGame will call playRound() 5 times, keep track of score and declare a winner
+// Variables humanScore and computerScore keep track of human and computer score respectively
+let humanScore = 0;
+let computerScore = 0;
+
+
 // Function playRound will have humanChoice and computerChoice as parameters
 function playRound(humanChoice, computerChoice) {
-// humanChoice and computerChoice will take getHuman/ComputerChoice respectivlyp
-// If humanChoice equals computerChoice, return "Tie"
+// If humanChoice equals computerChoice, return "Tie Game!"
+    if (humanChoice === computerChoice) {
+        return "Tie Game!";
 // Else-If humanChoice equals rock and computerChoice equals paper, return "Paper Wins" ++ the winner
+    } else if ((humanChoice === "rock") && (computerChoice === "paper")) {
+        ++computerScore;
+        return "You Lose! Paper beats Rock";
 // Else-If humanChoice equals rock and computerChoice equals scissors, return "Rock win" ++ the winner
+    } else if ((humanChoice === "rock") && (computerChoice === "scissors")) {
+        ++humanScore;
+        return "You Win! Rock beats Scissors";
 // Else-If humanChoice equals paper and computerChoice equals rock, return "Paper Wins" ++ the winner
+    } else if ((humanChoice === "paper") && (computerChoice === "rock")) {
+        ++humanScore;
+        return "You Win! Paper beats Rock";
 // Else-If humanChoice equals paper and computerChoice equals scissors, return "Scissors win" ++ the winner
+    } else if ((humanChoice === "paper") && (computerChoice === "scissors")) {
+        ++computerScore;
+        return "You Lose! Scissors beats Paper";
 // Else-If humanChoice equals scissors and computerChoice equals rock, reutrn "Rock wins" ++ the winner
+    } else if ((humanChoice === "scissors") && (computerChoice === "rock")) {
+        ++humanScore;
+        return "You Lose! Rock beats Scissors";
 // Else-If humanChoice equals scissors and computerChoice equals paper, return "Scissors win" ++ the winner
+    } else if ((humanChoice === "scissors") && (computerChoice === "paper")) {
+        ++computerScore;
+        return "You Win! Scissors beats Paper";
+    }
 }
+
+// For loop let round variable equal to one, while round is less than or equal to 6, increase round by one at end of loop:
+// If round is less than or equal to 5 then:
+// Log to console "Round (round)... Fight!"
+// Call getHumanChoice then getComputerChoice at start of round
+// Call playRound with humanSelection and computerSelection
+// Log to console "new line Current Score:
+//                  Player: (score)
+//                  Computer: (score)new line"
+// else if round is equal to 6 then:
+//  Let winner equal tie if humanScore equals computerScore, human if humanScore is greater than computerScore, computer if humanScore is less than computerScore 
+//  If winner equals tie then:
+//   Log to console "Match over! Tie game!"
+//  Else, log to console "Match over! The (winner) has won the game!
