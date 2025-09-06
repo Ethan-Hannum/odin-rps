@@ -1,7 +1,7 @@
 // Function getComputerChoice will randomly return "rock", "paper", or "scissors"
 function getComputerChoice() {    
 // Initialize randNum variable assigning Math.random to the randNum
-    let randNum = Math.random();
+    const randNum = Math.random();
 // Create if statement with the condition if randNum is less than or equal to 0.33 then return "rock"
     if (randNum <= 0.33) {
         return "rock";
@@ -44,7 +44,12 @@ function getHumanChoice() {
 let humanScore = 0;
 let computerScore = 0;
 
+// Initialize humanSelection and computerSelection variables to getHumanChoice() and getComputerChoice() respectively
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+
 // Function playRound will have humanChoice and computerChoice as parameters
+function playRound(humanChoice, computerChoice) {
 // humanChoice and computerChoice will take getHuman/ComputerChoice respectivlyp
 // If humanChoice equals computerChoice, return "Tie"
 // Else-If humanChoice equals rock and computerChoice equals paper, return "Paper Wins" ++ the winner
@@ -53,3 +58,4 @@ let computerScore = 0;
 // Else-If humanChoice equals paper and computerChoice equals scissors, return "Scissors win" ++ the winner
 // Else-If humanChoice equals scissors and computerChoice equals rock, reutrn "Rock wins" ++ the winner
 // Else-If humanChoice equals scissors and computerChoice equals paper, return "Scissors win" ++ the winner
+}
