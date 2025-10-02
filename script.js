@@ -17,40 +17,27 @@ function getComputerChoice() {
     }
 }
 
+// When selector button is clicked call playRound with correct selection
+const btnContainer = document.querySelector("#btnContainer");
+btnContainer.addEventListener("click", (event) => {
+    let target = event.target;
 
-// Function getHumanChoice will ask user "(R)ock, (P)aper or (S)cissors?" and return one of the choices
-function getHumanChoice() {
-// Initialize humanCoice variable assigning a prompt asking the user their choice
-    let humanChoice = prompt("(R)ock, (P)aper, (S)cissors?\nPlease Enter your answer: ");
-    let lowerChoice = humanChoice.toLowerCase();
-// Switch statement for choice where
-    switch (lowerChoice) {
-// Case "r" and Case "rock" return "rock", break
-        case "r":
+    switch(target.id) {
         case "rock":
-            console.log("Player: Rock")
-            return "rock";
+            playRound("rock", getComputerChoice());
+            console.log("rock test")
             break;
-// Case "p" and Case "paper" return "paper", break
-        case "p":
         case "paper":
-            console.log("Player: Paper")
-            return "paper";
+            playRound("paper", getComputerChoice());
             break;
-// Case "s" and cases "scissor(s)" return "scissors", break
-        case "s":
-        case "scissor":
         case "scissors":
-            console.log("Player: Scissors")
-            return "scissors";
+            playRound("scissors", getComputerChoice());
             break;
     }
-}
+})
 
-// Initialize humanSelection and computerSelection variables to getHumanChoice() and getComputerChoice() respectively
-console.log("Round 1... Fight")
-let humanSelection = getHumanChoice();
-let computerSelection = getComputerChoice();
+let humanScore = 0;
+let computerScore = 0;
 
 // Function playRound will have humanChoice and computerChoice as parameters
 function playRound(humanChoice, computerChoice) {
@@ -83,4 +70,3 @@ function playRound(humanChoice, computerChoice) {
         return console.log("You Win! Scissors beats Paper");
     }
 }
-playGame();
