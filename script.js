@@ -22,10 +22,11 @@ const btnContainer = document.querySelector("#btnContainer");
 btnContainer.addEventListener("click", (event) => {
     let target = event.target;
 
+    /* playRound will use correct human selection and call getComputerChoice
+    to play out the round */
     switch(target.id) {
         case "rock":
             playRound("rock", getComputerChoice());
-            console.log("rock test")
             break;
         case "paper":
             playRound("paper", getComputerChoice());
@@ -34,39 +35,59 @@ btnContainer.addEventListener("click", (event) => {
             playRound("scissors", getComputerChoice());
             break;
     }
-})
+});
 
 let humanScore = 0;
 let computerScore = 0;
 
+const score = document.querySelector("#score");
+function changeScore(result) {
+    // If result of playRound is human winning, add one to humanScore,
+    // Else add one to computerScore
+    (result === "human") ? ++humanScore : ++computerScore;
+    // If humanScore or computerScore is equal to or greater than 5, announce win
+    if ((humanScore >= 5) || (computerScore >= 5)) { 
+        if (humanScore >= 5) {
+            return score.textContent = "You have won the game!";
+        } else if (computerScore >= 5) {
+            return score.textContent = "The Computer has won the game"
+        }
+    } else {
+        return score.textContent = `Human: ${humanScore} - Computer: ${computerScore}`;
+    }
+}
+
+const results = document.querySelector("#results");
+
 // Function playRound will have humanChoice and computerChoice as parameters
+// results div will had it's textContent changed to the results, apprearing on page
 function playRound(humanChoice, computerChoice) {
 // If humanChoice equals computerChoice, return "Tie Game!"
     if (humanChoice === computerChoice) {
-        return console.log("Tie!");
+        return results.textContent = "Tie!";
 // Else-If humanChoice equals rock and computerChoice equals paper, return "Paper Wins" ++ the winner
     } else if ((humanChoice === "rock") && (computerChoice === "paper")) {
-        ++computerScore;
-        return console.log("You Lose! Paper beats Rock");
+        changeScore("computer");
+        return results.textContent = "Computer chose paper. You Lose!";
 // Else-If humanChoice equals rock and computerChoice equals scissors, return "Rock win" ++ the winner
     } else if ((humanChoice === "rock") && (computerChoice === "scissors")) {
-        ++humanScore;
-        return console.log("You Win! Rock beats Scissors");
+        changeScore("human");
+        return results.textContent = "Computer chose scissors. You Win!";
 // Else-If humanChoice equals paper and computerChoice equals rock, return "Paper Wins" ++ the winner
     } else if ((humanChoice === "paper") && (computerChoice === "rock")) {
-        ++humanScore;
-        return console.log("You Win! Paper beats Rock");
+        changeScore("human");
+        return results.textContent = "Computer chose rock. You Win!";
 // Else-If humanChoice equals paper and computerChoice equals scissors, return "Scissors win" ++ the winner
     } else if ((humanChoice === "paper") && (computerChoice === "scissors")) {
-        ++computerScore;
-        return console.log("You Lose! Scissors beats Paper");
+        changeScore("computer");
+        return results.textContent = "Computer chose scissors. You Lose!";
 // Else-If humanChoice equals scissors and computerChoice equals rock, reutrn "Rock wins" ++ the winner
     } else if ((humanChoice === "scissors") && (computerChoice === "rock")) {
-        ++humanScore;
-        return console.log("You Lose! Rock beats Scissors");
+        changeScore("computer");
+        return results.textContent = "Computer chose rock. You Lose!";
 // Else-If humanChoice equals scissors and computerChoice equals paper, return "Scissors win" ++ the winner
     } else if ((humanChoice === "scissors") && (computerChoice === "paper")) {
-        ++computerScore;
-        return console.log("You Win! Scissors beats Paper");
+        changeScore("human");
+        return results.textContent = "Computer chose paper. You Win!";
     }
 }
